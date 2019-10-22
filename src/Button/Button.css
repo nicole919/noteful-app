@@ -1,0 +1,21 @@
+.NavButton {
+  background-color: #cacaca;
+  border-radius: 3px;
+  border: 0;
+  color: black;
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  height: 30px;
+  text-align: center;
+  text-decoration: none;
+  width: 50px;
+}
+
+a.NavButton {
+  padding: 0px 4px 8px;
+}
+
+.NavButton:hover {
+  cursor: pointer;
+}
