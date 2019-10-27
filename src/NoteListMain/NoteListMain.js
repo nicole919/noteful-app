@@ -34,8 +34,7 @@ export default class NoteListMain extends React.Component {
             type="button"
             className="NoteListMain-add-note-button"
           >
-            <br />
-            Note
+            <br />+ Note
           </Button>
         </div>
       </section>

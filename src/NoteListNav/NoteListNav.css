@@ -4,16 +4,11 @@
   padding: 30px;
 }
 
-.NoteListNav-button-wrapper {
-  margin: 0 0 0 auto;
-  max-width: 180px;
-}
-
 .NoteListNav-add-folder-button {
   margin: 20px auto;
 }
 .NoteListNav-add-folder-button:hover {
-  background-color: #c51d34;
+  background-color: #ffb72f;
   color: white;
 }
 
@@ -31,5 +26,5 @@
   cursor: pointer;
 }
 .NoteListNav-folder-link.active {
-  background-color: #102541;
+  background-color: #010d1e;
 }

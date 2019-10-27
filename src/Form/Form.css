@@ -1,0 +1,62 @@
+.title {
+  margin-top: 0px;
+  text-align: center;
+}
+
+.mainForm {
+  background-color: #251731;
+  color: #dedede;
+  padding: 16px;
+  max-width: 332px;
+}
+
+.mainForm label {
+  display: block;
+  font-size: 16px;
+  padding-bottom: 8px;
+  margin-top: 15px;
+}
+
+.form input,
+.form textarea,
+.form select {
+  font-size: 14px;
+  padding: 8px;
+  width: 300px;
+}
+
+.form select {
+  height: 43px;
+}
+
+.form > .field {
+  margin-bottom: 16px;
+}
+.form > .buttons {
+  margin-top: 26px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  width: 30%;
+  background-color: #010d1e;
+  border-radius: 4px;
+  border: 0;
+  color: #cacaca;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+}
+.button:hover {
+  background-color: #ffb72f;
+  color: white;
+}
+
+.button :hover {
+  background-color: #ffb72f;
+  color: white;
+}

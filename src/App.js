@@ -4,15 +4,22 @@ import NoteListNav from "./NoteListNav/NoteListNav";
 import NotePageNav from "./NotePageNav/NotePageNav";
 import NoteListMain from "./NoteListMain/NoteListMain";
 import NotePageMain from "./NotePageMain/NotePageMain";
+import AddFolder from "./AddFolder";
+import AddNote from "./AddNote";
 import ApiContext from "./ApiContext";
 import config from "./config";
+import ErrorBoundary from "./ErrorBoundary";
 import "./App.css";
 
 class App extends Component {
-  state = {
-    notes: [],
-    folders: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      notes: [],
+      folders: [],
+      errorBoundaryKey: 0
+    };
+  }
 
   componentDidMount() {
     Promise.all([
@@ -40,6 +47,27 @@ class App extends Component {
     });
   };
 
+  handleAddFolder = folder => {
+    this.setState({
+      folders: [...this.state.folders, folder]
+    });
+  };
+
+  handleAddNote = note => {
+    this.setState({
+      notes: [...this.state.notes, note]
+    });
+  };
+
+  handleBackButton = () => {
+    this.setState(
+      prevState => ({
+        errorBoundaryKey: prevState.errorBoundaryKey + 1
+      }),
+      console.clear()
+    );
+  };
+
   renderNavRoutes() {
     return (
       <>
@@ -59,7 +87,11 @@ class App extends Component {
         {["/", "/folder/:folderId"].map(path => (
           <Route exact key={path} path={path} component={NoteListMain} />
         ))}
-        <Route path="/note/:noteId" component={NotePageMain} />
+        <ErrorBoundary key={this.state.errorBoundaryKey}>
+          <Route path="/note/:noteId" component={NotePageMain} />
+        </ErrorBoundary>
+        <Route path="/add-note" component={AddNote} />
+        <Route path="/add-folder" component={AddFolder} />
       </>
     );
   }
@@ -68,7 +100,12 @@ class App extends Component {
     const value = {
       notes: this.state.notes,
       folders: this.state.folders,
-      deleteNote: this.handleDeleteNote
+      deleteNote: this.handleDeleteNote,
+      addFolder: this.handleAddFolder,
+      addNote: this.handleAddNote,
+      back: this.handleBackButton,
+      toggle: this.state.toggle,
+      toggleErrors: this.handleErrorToggle
     };
     return (
       <ApiContext.Provider value={value}>

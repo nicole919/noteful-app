@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ApiContext from "../ApiContext";
-import moment, { format } from "moment";
+import moment from "moment";
 import config from "../config";
+import PropTypes from "prop-types";
 import "./NotePage.css";
 
 export default class Note extends React.Component {
@@ -11,8 +12,8 @@ export default class Note extends React.Component {
   };
   static contextType = ApiContext;
 
-  handleClickDelete = e => {
-    e.preventDefault();
+  handleClickDelete = event => {
+    event.preventDefault();
     const noteId = this.props.id;
 
     fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
@@ -27,7 +28,6 @@ export default class Note extends React.Component {
       })
       .then(() => {
         this.context.deleteNote(noteId);
-        // allow parent to perform extra behaviour
         this.props.onDeleteNote(noteId);
       })
       .catch(error => {
@@ -58,3 +58,10 @@ export default class Note extends React.Component {
     );
   }
 }
+
+Note.propType = {
+  onDeleteNote: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  modified: PropTypes.string
+};

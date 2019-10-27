@@ -8,7 +8,7 @@ export default class NoteListNav extends React.Component {
   static contextType = ApiContext;
 
   render() {
-    const { folders = [], notes = [] } = this.context;
+    const { folders = [] } = this.context;
     return (
       <div className="NoteListNav">
         <ul className="NoteListNav-list">
@@ -23,15 +23,14 @@ export default class NoteListNav extends React.Component {
             </li>
           ))}
         </ul>
-        <div className="NoteListNav-button-wrapper">
+        <div>
           <Button
             tag={Link}
             to="/add-folder"
             type="button"
             className="NoteListNav-add-folder-button"
           >
-            <br />
-            Folder
+            <br />+ Folder
           </Button>
         </div>
       </div>
