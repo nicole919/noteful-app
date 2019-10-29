@@ -71,7 +71,7 @@ export default class AddFolder extends React.Component {
     event.preventDefault();
     const { title } = this.state;
     const folder = {
-      folderName: title
+      name: title
     };
 
     this.setState({ error: null });
@@ -108,6 +108,8 @@ export default class AddFolder extends React.Component {
             className="field"
             name="title"
             id="title"
+            aria-required="true"
+            aria-label="enter note title"
             onChange={event => this.updateFormEntry(event)}
           />
         </div>

@@ -85,9 +85,9 @@ export default class AddNote extends React.Component {
     event.preventDefault();
     const { title, content, folderId } = this.state;
     const note = {
-      note_name: title,
+      name: title,
       content: content,
-      folder_id: folderId,
+      folderId: folderId,
       modified: new Date()
     };
 
@@ -122,7 +122,7 @@ export default class AddNote extends React.Component {
     const options = folders.map(folder => {
       return (
         <option key={folder.id} id={folder.id}>
-          {folder.folder_name}
+          {folder.name}
         </option>
       );
     });
@@ -137,6 +137,8 @@ export default class AddNote extends React.Component {
             className="field"
             name="title"
             id="title"
+            aria-required="true"
+            aria-label="enter note title"
             onChange={event => this.updateFormEntry(event)}
           />
         </div>
@@ -146,6 +148,8 @@ export default class AddNote extends React.Component {
             className="field"
             name="content"
             id="content"
+            aria-required="true"
+            aria-label="enter note content"
             onChange={event => this.updateFormEntry(event)}
           />
         </div>
@@ -156,6 +160,8 @@ export default class AddNote extends React.Component {
             className="field"
             name="folderSelect"
             id="folder-select"
+            aria-required="true"
+            aria-label="select folder"
             ref={this.folderSelect}
             onChange={event => this.updateFormEntry(event)}
           >

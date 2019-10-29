@@ -22,9 +22,7 @@ export default class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
       return (
         <>
-          <p>
-            <strong>Something went wrong</strong>
-          </p>
+          <h2> Something went wrong</h2>
           <Route path="/" component={this.goBack()} />
         </>
       );

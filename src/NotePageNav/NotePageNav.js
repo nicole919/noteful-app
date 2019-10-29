@@ -27,7 +27,8 @@ export default class NotePageNav extends React.Component {
           tag="button"
           role="link"
           onClick={() => this.props.history.goBack()}
-          className="NotePageNav__back-button"
+          className="NotePageNav-back-button"
+          aria-label="go back"
         >
           <br />
           Back

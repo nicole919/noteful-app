@@ -5,6 +5,10 @@ import { findNote } from "../notes-helpers";
 import "./NotePageMain.css";
 
 export default class NotePageMain extends React.Component {
+  state = {
+    forErrors: this.props.match,
+    toggle: true
+  };
   static defaultProps = {
     match: {
       params: {}
@@ -13,13 +17,21 @@ export default class NotePageMain extends React.Component {
   static contextType = ApiContext;
 
   handleDeleteNote = noteId => {
-    this.props.history.push(`/`);
+    this.props.history.push("/");
   };
-
   render() {
     const { notes = [] } = this.context;
-    const { noteId } = this.props.match.params;
+    const { noteId } = this.state.forErrors.params;
     const note = findNote(notes, noteId) || { content: "" };
+    if (this.state.toggle === false) {
+      this.setState({
+        forErrors: "err"
+      });
+      this.setState({
+        forErrors: this.props.match
+      });
+    }
+
     return (
       <section className="NotePageMain">
         <Note

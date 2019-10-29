@@ -33,6 +33,7 @@ export default class NoteListMain extends React.Component {
             to="/add-note"
             type="button"
             className="NoteListMain-add-note-button"
+            aria-label="add note"
           >
             <br />+ Note
           </Button>
